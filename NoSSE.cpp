@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <math.h>
 #include <SFML/Graphics.hpp>
 
 using namespace sf;
@@ -9,15 +10,15 @@ const int   H   = 1080;
 
 #define ABS_DELTA 1.5
 
-const float min_X   = -ABS_DELTA;
-const float max_X   =  ABS_DELTA;
+const double min_X  = -ABS_DELTA;
+const double max_X  =  ABS_DELTA;
 
-const float min_Y   = -ABS_DELTA;
-const float max_Y   =  ABS_DELTA;
+const double min_Y  = -ABS_DELTA;
+const double max_Y  =  ABS_DELTA;
 
-const int   max_iter    = 400;
+const int   max_cnt = 400;
 
-const int   range   = 400;
+const int   range2  = 400;
 
 Color linear_interpolation(const Color& v, const Color& u, double a)
 {
@@ -58,19 +59,19 @@ int main ()
         {
             for (unsigned int x = 0; x < W; x++)
             {
-                float x_0   = min_X + (max_X - min_X) * x / W;
-                float y_0   = min_Y + (max_Y - min_Y) * y / H;
+                double x_0   = min_X + (max_X - min_X) * ((double) x / (double) W);
+                double y_0   = min_Y + (max_Y - min_Y) * ((double) y / (double) H);
 
-                float x_i   = x_0;
-                float y2    = y_0;
-                float x2    = 0;
-                float xy    = 0;
-                float y_i   = 0;
+                double x_i   = x_0;
+                double y2    = y_0;
+                double x2    = 0;
+                double xy    = 0;
+                double y_i   = 0;
 
                 unsigned char a = 0;
 
-                unsigned int iter = 0;
-                for (; iter < max_iter; iter++)
+                unsigned int cnt = 0;
+                for (; cnt < max_cnt; cnt++)
                 {
                     x2  = x_i * x_i;
                     y2  = y_i * y_i;
@@ -79,9 +80,9 @@ int main ()
                     x_i = x2 - y2 + x_0;
                     y_i = 2 * xy + y_0;
 
-                    if (x2 + y2 > range)
+                    if (x2 + y2 > range2)
                     {
-                        a = iter * 10;
+                        a = cnt * 8;
                         break;
                     }
                 }
@@ -133,7 +134,7 @@ int main ()
 		window.draw(sprite);
 
 		char str[100];
-		sprintf(str, "max iter:%d\n""zoom:x%2.2lf", max_iter, 1);
+		sprintf(str, "max iter:%d\n""zoom:x%2.2lf", max_cnt, 1);
 		text.setString(str);
 		window.draw(text);
 
