@@ -1,37 +1,34 @@
+//================================================================================
+//27.03.2023
+//================================================================================
+
 #include <stdio.h>
 #include <math.h>
 #include <SFML/Graphics.hpp>
 
+#include "Mandelbrot.h"
+
+//================================================================================
+
 using namespace sf;
 using namespace std;
 
-const int   W   = 1080;
-const int   H   = 1080;
-
-#define ABS_DELTA 1.5
-
-const double min_X  = -ABS_DELTA;
-const double max_X  =  ABS_DELTA;
-
-const double min_Y  = -ABS_DELTA;
-const double max_Y  =  ABS_DELTA;
-
-const int   max_cnt = 400;
+//================================================================================
 
 const int   range2  = 400;
 
-Color linear_interpolation(const Color& v, const Color& u, double a)
-{
-	auto const b = 1 - a;
-	return Color(b*v.r + a * u.r, b*v.g + a * u.g, b*v.b + a * u.b);
-}
+//================================================================================
 
 int main ()
 {
-	RenderWindow window(VideoMode(W, H), "Mandelbrot-Menge");
+    SRender render = {};
+
+    render_init (&render);
+
+	RenderWindow window(VideoMode(render.W, render.H), "Mandelbrot-Menge");
 
 	Image image;
-    image.create(W, H);
+    image.create(render.W, render.H);
 
 	Texture texture;
 	Sprite sprite;
@@ -42,7 +39,9 @@ int main ()
 	Text text;
 	text.setFont(font);
 	text.setCharacterSize(24);
-	text.setFillColor(Color::White);
+	text.setFillColor(Color::Green);
+    text.setOutlineThickness(4);
+
 
 	while (window.isOpen())
 	{
@@ -53,25 +52,58 @@ int main ()
             {
                 window.close();
             }
+
+            if (event.type == Event::KeyPressed)
+			{
+                user_move (ARGUMENTS);
+
+				if (event.key.code == Keyboard::N)
+                {
+                    render.min_X = - render.std_coord;
+                    render.max_X =   render.std_coord;
+                    render.min_Y = - render.std_coord;
+                    render.max_Y =   render.std_coord;
+
+                    render.delta_X = render.max_X - render.min_X;
+                    render.delta_Y = render.max_Y - render.min_Y;
+
+                    render.max_cnt = render.std_max_cnt;
+                }
+
+				if (event.key.code == Keyboard::Escape)
+                {
+                    window.close();
+                }
+			}
+
+            if (event.type == Event::MouseWheelScrolled)
+			{
+                user_max_cnt_change (ARGUMENTS);
+			}
+
+            if (event.type == Event::MouseButtonPressed)
+			{
+                user_zoom (ARGUMENTS);
+			}
         }
 
-        for (unsigned int y = 0; y < H; y++)
+        for (unsigned int y = 0; y < render.H; y++)
         {
-            for (unsigned int x = 0; x < W; x++)
+            for (unsigned int x = 0; x < render.W; x++)
             {
-                double x_0   = min_X + (max_X - min_X) * ((double) x / (double) W);
-                double y_0   = min_Y + (max_Y - min_Y) * ((double) y / (double) H);
+                double x_0   = render.min_X + render.delta_X * ((double) x / (double) render.W);
+                double y_0   = render.min_Y + render.delta_Y * ((double) y / (double) render.H);
 
                 double x_i   = x_0;
-                double y2    = y_0;
+                double y2    = 0;
                 double x2    = 0;
                 double xy    = 0;
-                double y_i   = 0;
+                double y_i   = y_0;
 
                 unsigned char a = 0;
 
                 unsigned int cnt = 0;
-                for (; cnt < max_cnt; cnt++)
+                for (; cnt < render.max_cnt; cnt++)
                 {
                     x2  = x_i * x_i;
                     y2  = y_i * y_i;
@@ -82,50 +114,13 @@ int main ()
 
                     if (x2 + y2 > range2)
                     {
-                        a = cnt * 8;
+                        a = cnt * 7;
                         break;
                     }
                 }
 
-                /*
-                int r = 1.0 * (max_iter - iter) / max_iter * 0xff;
-
-                int g = r;
-                int b = r;
-
-
-                //color pallet similar to Ultra Fractal and Wikipedia
-                static const vector<Color> colors{
-                    {0,7,100},
-                    {32,107,203},
-                    {237,255,255},
-                    {255,170,0},
-                    {0,2,0},
-                };
-
-                static const vector<Color> colors
-                {
-                    {0,0,0},
-                    {213,67,31},
-                    {251,255,121},
-                    {62,223,89},
-                    {43,30,218},
-                    {0,255,247}
-                };
-
-                static const auto max_color = colors.size() - 1;
-                if (iter == max_iter)iter = 0;
-                double mu = 1.0*iter / max_iter;
-                //scale mu to be in the range of colors
-                mu *= max_color;
-                auto i_mu = static_cast<size_t>(mu);
-                auto color1 = colors[i_mu];
-                auto color2 = colors[min(i_mu + 1, max_color)];
-
-                Color c = linear_interpolation(color1, color2, mu - i_mu);
-                */
-
-                image.setPixel(x, y, {a, a, a});
+                //image.setPixel(x, y, {render.red * (a % 2), render.green * (a % 2) , render.blue * (a % 2)});
+                image.setPixel(x, y, {255 * (a % 2), 255 * (a % 2) , 255 * (a % 2)});
             }
         }
 
@@ -134,7 +129,7 @@ int main ()
 		window.draw(sprite);
 
 		char str[100];
-		sprintf(str, "max iter:%d\n""zoom:x%2.2lf", max_cnt, 1);
+		sprintf(str, "max iter:%d\n""zoom:x%2.2lf", render.max_cnt, 1);
 		text.setString(str);
 		window.draw(text);
 

@@ -22,6 +22,8 @@ VR_LIBS 	= -lsfml-graphics -lsfml-window -lsfml-system
 
 VR_FILE		= NoSSE
 
+VR_FUNCS	= Mandelbrot
+
 #=============================================================================================================================================================================
 
 DO: FOLDERS DO_COMPILE
@@ -29,13 +31,16 @@ DO: FOLDERS DO_COMPILE
 FOLDERS:
 	mkdir -p OBJECTS
 
-DO_COMPILE: OBJECTS/$(VR_FILE).o
-	$(VR_COMPILER) OBJECTS/$(VR_FILE).o -o $(VR_FILE) $(VR_LIBS) $(VR_FLAGS)
+DO_COMPILE: OBJECTS/$(VR_FILE).o OBJECTS/$(VR_FUNCS).o
+	$(VR_COMPILER) OBJECTS/$(VR_FILE).o OBJECTS/$(VR_FUNCS).o -o $(VR_FILE) $(VR_LIBS) $(VR_FLAGS)
 
 #=============================================================================================================================================================================
 
 OBJECTS/$(VR_FILE).o:  $(VR_FILE).cpp
 	$(VR_COMPILER) -c -o OBJECTS/$(VR_FILE).o  $(VR_FILE).cpp $(VR_FLAGS)
+
+OBJECTS/$(VR_FUNCS).o:  $(VR_FUNCS).cpp
+	$(VR_COMPILER) -c -o OBJECTS/$(VR_FUNCS).o  $(VR_FUNCS).cpp $(VR_FLAGS)
 
 #=============================================================================================================================================================================
 
