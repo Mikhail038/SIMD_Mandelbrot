@@ -3,6 +3,10 @@
 //================================================================================
 
 #include <SFML/Graphics.hpp>
+
+#include <immintrin.h>
+#include <x86intrin.h>
+
 #include "Mandelbrot.h"
 
 //================================================================================
@@ -14,19 +18,99 @@ using namespace std;
 
 void render_init (SRender* render)
 {
-    render->min_X = - render->std_coord;
-    render->max_X =   render->std_coord;
-    render->min_Y = - render->std_coord;
-    render->max_Y =   render->std_coord;
+    int std_coord = 2;
+
+    render->min_X = - std_coord;
+    render->max_X =   std_coord;
+    render->min_Y = - std_coord;
+    render->max_Y =   std_coord;
 
     render->delta_X = render->max_X - render->min_X;
     render->delta_Y = render->max_Y - render->min_Y;
 
-    render->max_cnt = render->std_max_cnt;
+    render->max_cnt = 256;
 
     render->scale = 1;
 
     render->speed_coef = 0.2;
+
+    render->draw_permission = 1;
+
+    render->distance = 100;
+
+    render->zoom_coef = 3;
+
+    return;
+}
+
+//================================================================================
+
+void start_fps_count (Clock* clock)
+{
+    clock->restart();
+
+    return;
+}
+
+int get_fps_count (Clock* clock)
+{
+    return int(1 / clock->getElapsedTime().asSeconds());
+}
+
+//================================================================================
+
+void user_display (sf::Window* window, sf::Text* text, SRender* render, int fps)
+{
+    char str[100];
+
+    sprintf(str,    "   max iteration:%d\n"
+                    "   zoom:x%2.2lf\n"
+                    "   FPS:%d", render->max_cnt, render->scale, fps);
+
+    text->setString(str);
+
+    return;
+}
+
+void count_Mandelbrot (SRender* render, Image* image)
+{
+    for (unsigned int y = 0; y < render->H; y++)
+    {
+        for (unsigned int x = 0; x < render->W; x++)
+        {
+            double x_0   = render->min_X + render->delta_X * ((double) x / (double) render->W);
+            double y_0   = render->min_Y + render->delta_Y * ((double) y / (double) render->H);
+
+            double x_i   = x_0;
+            double y_i   = y_0;
+
+            double y2    = 0;
+            double x2    = 0;
+            double xy    = 0;
+
+            unsigned char a = 0;
+
+            unsigned int cnt = 0;
+            for (; (cnt < render->max_cnt) && (x2 + y2 < render->distance); cnt++, a++)
+            {
+                x2  = x_i * x_i;
+                y2  = y_i * y_i;
+                xy  = x_i * y_i;
+
+                x_i = x2 - y2 + x_0;
+                y_i = 2 * xy + y_0;
+            }
+
+
+            if (render->draw_permission == 1)
+            {
+                a *= 7;
+
+                //image->setPixel(x, y, {render->red * (a % 2), render->green * (a % 2) , render->blue * (a % 2)});
+                image->setPixel(x, y, {255 * (a % 2), 255 * (a % 2) , 255 * (a % 2)});
+            }
+        }
+    }
 
     return;
 }
