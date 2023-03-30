@@ -32,18 +32,24 @@ typedef struct
 
     double scale;
 
-    int draw_permission;
+    bool draw_permission;
 
     double distance;
 
     int zoom_coef;
 }SRender;
 
+typedef struct
+{
+    int frames_amnt;
+    double fps;
+    int frames_cnt;
+}STimer;
 //================================================================================
 
-void start_fps_count (sf::Clock* clock);
+void start_fps_count (sf::Clock* clock, STimer* timer);
 
-int get_fps_count (sf::Clock* clock);
+void get_fps_count (sf::Clock* clock, STimer* timer);
 
 //================================================================================
 
@@ -55,7 +61,7 @@ void count_Mandelbrot (SRender* render, sf::Image* image);
 
 //================================================================================
 
-void user_display (sf::Window* window, sf::Text* text, SRender* render, int fps);
+void user_display (sf::Window* window, sf::Text* text, SRender* render);
 
 //================================================================================
 

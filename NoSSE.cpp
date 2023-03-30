@@ -38,9 +38,16 @@ int main ()
 	text.setFillColor(Color::Green);
     text.setOutlineThickness(4);
 
+    Clock clock;
+    STimer timer;
+    timer.frames_amnt = 10;
+    timer.frames_cnt  = 0;
+    timer.fps = 0;
 
 	while (window.isOpen())
 	{
+        start_fps_count (&clock, &timer);
+
         Event event;
         while (window.pollEvent(event))
         {
@@ -80,31 +87,22 @@ int main ()
 			}
         }
 
-        Clock clock;
-
-        start_fps_count (&clock);
 
         count_Mandelbrot (&render, &image);
 
-        if (render.draw_permission == 1)
+        if (render.draw_permission == true)
         {
             texture.loadFromImage(image);
             sprite.setTexture(texture);
             window.draw(sprite);
-        }
 
-        int fps = get_fps_count (&clock);
-
-        if (render.draw_permission == 1)
-        {
-            user_display (&window, &text, &render, fps);
+            user_display (&window, &text, &render);
             window.draw(text);
 
             window.display();
         }
 
-        printf("FPS: %d\n", fps);
-
+        get_fps_count (&clock, &timer);
     }
 
 }

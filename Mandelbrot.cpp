@@ -34,7 +34,7 @@ void render_init (SRender* render)
 
     render->speed_coef = 0.2;
 
-    render->draw_permission = 1;
+    render->draw_permission = false;
 
     render->distance = 100;
 
@@ -45,27 +45,42 @@ void render_init (SRender* render)
 
 //================================================================================
 
-void start_fps_count (Clock* clock)
+void start_fps_count (sf::Clock* clock, STimer* timer)
 {
-    clock->restart();
+    if (timer->frames_cnt == 0)
+    {
+        clock->restart();
+    }
 
     return;
 }
 
-int get_fps_count (Clock* clock)
+void get_fps_count (sf::Clock* clock, STimer* timer)
 {
-    return int(1 / clock->getElapsedTime().asSeconds());
+    if (timer->frames_cnt == timer->frames_amnt)
+    {
+        timer->fps =  1 / ((double) clock->getElapsedTime().asSeconds() / (double) timer->frames_amnt);
+
+        printf("avg_FPS: %g\n", timer->fps);
+
+        timer->frames_cnt = 0;
+    }
+    else
+    {
+        timer->frames_cnt++;
+    }
+
+    return;
 }
 
 //================================================================================
 
-void user_display (sf::Window* window, sf::Text* text, SRender* render, int fps)
+void user_display (sf::Window* window, sf::Text* text, SRender* render)
 {
     char str[100];
 
     sprintf(str,    "   max iteration:%d\n"
-                    "   zoom:x%2.2lf\n"
-                    "   FPS:%d", render->max_cnt, render->scale, fps);
+                    "   zoom:x%2.2lf\n", render->max_cnt, render->scale);
 
     text->setString(str);
 
@@ -102,7 +117,7 @@ void count_Mandelbrot (SRender* render, Image* image)
             }
 
 
-            if (render->draw_permission == 1)
+            if (render->draw_permission == true)
             {
                 a *= 7;
 
