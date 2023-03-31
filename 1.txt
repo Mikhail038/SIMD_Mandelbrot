@@ -1,0 +1,736 @@
+mikhail-laptop
+    описание: Ноутбук
+    продукт: G3 3579 (086F)
+    производитель: Dell Inc.
+    серийный №: 694X7T2
+    разрядность: 64 bits
+    возможности: smbios-3.1.1 dmi-3.1.1 smp vsyscall32
+    конфигурация: boot=normal chassis=notebook family=GSeries sku=086F uuid=4c4c4544-0039-3410-8058-b6c04f375432
+  *-core
+       описание: Материнская плата
+       продукт: 05K0D2
+       производитель: Dell Inc.
+       физический ID: 0
+       версия: A00
+       серийный №: /694X7T2/CNCMC0091V03A5/
+     *-firmware
+          описание: BIOS
+          производитель: Dell Inc.
+          физический ID: 0
+          версия: 1.24.0
+          date: 11/09/2022
+          размер: 64KiB
+          capacity: 32MiB
+          возможности: pci pnp upgrade shadowing cdboot bootselect edd int13floppynec int13floppy1200 int13floppy720 int13floppy2880 int5printscreen int9keyboard int14serial int17printer acpi usb smartbattery biosbootspecification netboot uefi
+     *-memory
+          описание: Системная память
+          физический ID: 42
+          слот: Системная плата или материнская плата
+          размер: 16GiB
+        *-bank:0
+             описание: SO-DIMM DDR4 Синхронная 2667 MHz (0,4 ns)
+             продукт: M471A1K43DB1-CTD
+             производитель: Samsung
+             физический ID: 0
+             серийный №: 93A0794B
+             слот: DIMM A
+             размер: 8GiB
+             разрядность: 64 bits
+             частота: 2667MHz (0.4ns)
+        *-bank:1
+             описание: SO-DIMM DDR4 Синхронная 2667 MHz (0,4 ns)
+             продукт: M471A1K43CB1-CTD
+             производитель: Samsung
+             физический ID: 1
+             серийный №: 3398126E
+             слот: DIMM B
+             размер: 8GiB
+             разрядность: 64 bits
+             частота: 2667MHz (0.4ns)
+     *-cache:0
+          описание: L1 кэш
+          физический ID: 4b
+          слот: L1 Cache
+          размер: 256KiB
+          capacity: 256KiB
+          возможности: synchronous internal write-back unified
+          конфигурация: level=1
+     *-cache:1
+          описание: L2 кэш
+          физический ID: 4c
+          слот: L2 Cache
+          размер: 1MiB
+          capacity: 1MiB
+          возможности: synchronous internal write-back unified
+          конфигурация: level=2
+     *-cache:2
+          описание: L3 кэш
+          физический ID: 4d
+          слот: L3 Cache
+          размер: 8MiB
+          capacity: 8MiB
+          возможности: synchronous internal write-back unified
+          конфигурация: level=3
+     *-cpu
+          описание: ЦПУ
+          продукт: Intel(R) Core(TM) i5-8300H CPU @ 2.30GHz
+          производитель: Intel Corp.
+          физический ID: 4e
+          сведения о шине: cpu@0
+          версия: 6.158.10
+          слот: U3E1
+          размер: 1199MHz
+          capacity: 4GHz
+          разрядность: 64 bits
+          частота: 100MHz
+          возможности: lm fpu fpu_exception wp vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush dts acpi mmx fxsr sse sse2 ss ht tm pbe syscall nx pdpe1gb rdtscp x86-64 constant_tsc art arch_perfmon pebs bts rep_good nopl xtopology nonstop_tsc cpuid aperfmperf pni pclmulqdq dtes64 monitor ds_cpl vmx est tm2 ssse3 sdbg fma cx16 xtpr pdcm pcid sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand lahf_lm abm 3dnowprefetch cpuid_fault epb invpcid_single pti ssbd ibrs ibpb stibp tpr_shadow vnmi flexpriority ept vpid ept_ad fsgsbase tsc_adjust bmi1 avx2 smep bmi2 erms invpcid mpx rdseed adx smap clflushopt intel_pt xsaveopt xsavec xgetbv1 xsaves dtherm ida arat pln pts hwp hwp_notify hwp_act_window hwp_epp md_clear flush_l1d arch_capabilities cpufreq
+          конфигурация: cores=4 enabledcores=4 microcode=240 threads=8
+     *-pci
+          описание: Host bridge
+          продукт: 8th Gen Core 4-core Processor Host Bridge/DRAM Registers [Coffee Lake H]
+          производитель: Intel Corporation
+          физический ID: 100
+          сведения о шине: pci@0000:00:00.0
+          версия: 07
+          разрядность: 32 bits
+          частота: 33MHz
+          конфигурация: driver=skl_uncore
+          ресурсы: IRQ:0
+        *-pci:0
+             описание: PCI bridge
+             продукт: 6th-10th Gen Core Processor PCIe Controller (x16)
+             производитель: Intel Corporation
+             физический ID: 1
+             сведения о шине: pci@0000:00:01.0
+             версия: 07
+             разрядность: 32 bits
+             частота: 33MHz
+             возможности: pci pm msi pciexpress normal_decode bus_master cap_list
+             конфигурация: driver=pcieport
+             ресурсы: IRQ:122 ioport:4000(размер=4096) память:a3000000-a40fffff ioport:90000000(размер=301989888)
+           *-display
+                описание: 3D controller
+                продукт: GP107M [GeForce GTX 1050 Mobile]
+                производитель: NVIDIA Corporation
+                физический ID: 0
+                сведения о шине: pci@0000:01:00.0
+                версия: a1
+                разрядность: 64 bits
+                частота: 33MHz
+                возможности: pm msi pciexpress bus_master cap_list rom
+                конфигурация: driver=nvidia latency=0
+                ресурсы: IRQ:145 память:a3000000-a3ffffff память:90000000-9fffffff память:a0000000-a1ffffff ioport:4000(размер=128) память:a4000000-a407ffff
+           *-multimedia
+                описание: Audio device
+                продукт: GP107GL High Definition Audio Controller
+                производитель: NVIDIA Corporation
+                физический ID: 0.1
+                сведения о шине: pci@0000:01:00.1
+                логическое имя: card1
+                логическое имя: /dev/snd/controlC1
+                логическое имя: /dev/snd/hwC1D0
+                логическое имя: /dev/snd/pcmC1D3p
+                логическое имя: /dev/snd/pcmC1D7p
+                логическое имя: /dev/snd/pcmC1D8p
+                логическое имя: /dev/snd/pcmC1D9p
+                версия: a1
+                разрядность: 32 bits
+                частота: 33MHz
+                возможности: pm msi pciexpress bus_master cap_list
+                конфигурация: driver=snd_hda_intel latency=0
+                ресурсы: IRQ:17 память:a4080000-a4083fff
+              *-input:0
+                   продукт: HDA NVidia HDMI/DP,pcm=3
+                   физический ID: 0
+                   логическое имя: input20
+                   логическое имя: /dev/input/event7
+              *-input:1
+                   продукт: HDA NVidia HDMI/DP,pcm=7
+                   физический ID: 1
+                   логическое имя: input21
+                   логическое имя: /dev/input/event14
+              *-input:2
+                   продукт: HDA NVidia HDMI/DP,pcm=8
+                   физический ID: 2
+                   логическое имя: input22
+                   логическое имя: /dev/input/event16
+              *-input:3
+                   продукт: HDA NVidia HDMI/DP,pcm=9
+                   физический ID: 3
+                   логическое имя: input23
+                   логическое имя: /dev/input/event17
+        *-display
+             описание: VGA compatible controller
+             продукт: CoffeeLake-H GT2 [UHD Graphics 630]
+             производитель: Intel Corporation
+             физический ID: 2
+             сведения о шине: pci@0000:00:02.0
+             логическое имя: /dev/fb0
+             версия: 00
+             разрядность: 64 bits
+             частота: 33MHz
+             возможности: pciexpress msi pm vga_controller bus_master cap_list rom fb
+             конфигурация: depth=32 driver=i915 latency=0 resolution=1920,1080
+             ресурсы: IRQ:144 память:a2000000-a2ffffff память:80000000-8fffffff ioport:5000(размер=64) память:c0000-dffff
+        *-generic:0
+             описание: Signal processing controller
+             продукт: Xeon E3-1200 v5/E3-1500 v5/6th Gen Core Processor Thermal Subsystem
+             производитель: Intel Corporation
+             физический ID: 4
+             сведения о шине: pci@0000:00:04.0
+             версия: 07
+             разрядность: 64 bits
+             частота: 33MHz
+             возможности: msi pm cap_list
+             конфигурация: driver=proc_thermal latency=0
+             ресурсы: IRQ:16 память:a4410000-a4417fff
+        *-generic:1 UNCLAIMED
+             описание: System peripheral
+             продукт: Xeon E3-1200 v5/v6 / E3-1500 v5 / 6th/7th/8th Gen Core Processor Gaussian Mixture Model
+             производитель: Intel Corporation
+             физический ID: 8
+             сведения о шине: pci@0000:00:08.0
+             версия: 00
+             разрядность: 64 bits
+             частота: 33MHz
+             возможности: msi pm cap_list
+             конфигурация: latency=0
+             ресурсы: память:a442c000-a442cfff
+        *-generic:2
+             описание: Signal processing controller
+             продукт: Cannon Lake PCH Thermal Controller
+             производитель: Intel Corporation
+             физический ID: 12
+             сведения о шине: pci@0000:00:12.0
+             версия: 10
+             разрядность: 64 bits
+             частота: 33MHz
+             возможности: pm msi cap_list
+             конфигурация: driver=intel_pch_thermal latency=0
+             ресурсы: IRQ:16 память:a442b000-a442bfff
+        *-usb
+             описание: USB controller
+             продукт: Cannon Lake PCH USB 3.1 xHCI Host Controller
+             производитель: Intel Corporation
+             физический ID: 14
+             сведения о шине: pci@0000:00:14.0
+             версия: 10
+             разрядность: 64 bits
+             частота: 33MHz
+             возможности: pm msi xhci bus_master cap_list
+             конфигурация: driver=xhci_hcd latency=0
+             ресурсы: IRQ:125 память:a4400000-a440ffff
+           *-usbhost:0
+                продукт: xHCI Host Controller
+                производитель: Linux 5.19.0-38-generic xhci-hcd
+                физический ID: 0
+                сведения о шине: usb@1
+                логическое имя: usb1
+                версия: 5.19
+                возможности: usb-2.00
+                конфигурация: driver=hub slots=16 speed=480Mbit/s
+              *-usb:0
+                   описание: Мышь
+                   продукт: Razer Razer DeathAdder V2
+                   производитель: Razer
+                   физический ID: 3
+                   сведения о шине: usb@1:3
+                   логическое имя: input24
+                   логическое имя: /dev/input/event13
+                   логическое имя: /dev/input/mouse0
+                   логическое имя: input28
+                   логическое имя: /dev/input/event9
+                   логическое имя: input28::capslock
+                   логическое имя: input28::numlock
+                   логическое имя: input28::scrolllock
+                   логическое имя: input29
+                   логическое имя: /dev/input/event10
+                   версия: 2.00
+                   возможности: usb-2.00 usb
+                   конфигурация: driver=usbhid maxpower=100mA speed=12Mbit/s
+              *-usb:1
+                   описание: Видео
+                   продукт: Integrated_Webcam_HD: Integrate
+                   производитель: CNFFH37O0344002155E2
+                   физический ID: 5
+                   сведения о шине: usb@1:5
+                   логическое имя: input18
+                   логическое имя: /dev/input/event5
+                   версия: 64.26
+                   возможности: usb-2.00 usb
+                   конфигурация: driver=uvcvideo maxpower=500mA speed=480Mbit/s
+              *-usb:2
+                   описание: MMC Host
+                   продукт: USB2.0-CRW
+                   производитель: Generic
+                   физический ID: 6
+                   сведения о шине: usb@1:6
+                   логическое имя: mmc0
+                   версия: 39.60
+                   серийный №: 20100201396000000
+                   возможности: usb-2.00
+                   конфигурация: driver=rtsx_usb maxpower=500mA speed=480Mbit/s
+              *-usb:3
+                   описание: Беспроводной интерфейс Bluetooth
+                   продукт: Bluetooth 9460/9560 Jefferson Peak (JfP)
+                   производитель: Intel Corp.
+                   физический ID: e
+                   сведения о шине: usb@1:e
+                   версия: 0.02
+                   возможности: bluetooth usb-2.00
+                   конфигурация: driver=btusb maxpower=100mA speed=12Mbit/s
+           *-usbhost:1
+                продукт: xHCI Host Controller
+                производитель: Linux 5.19.0-38-generic xhci-hcd
+                физический ID: 1
+                сведения о шине: usb@2
+                логическое имя: usb2
+                версия: 5.19
+                возможности: usb-3.10
+                конфигурация: driver=hub slots=8 speed=10000Mbit/s
+        *-memory UNCLAIMED
+             описание: RAM memory
+             продукт: Cannon Lake PCH Shared SRAM
+             производитель: Intel Corporation
+             физический ID: 14.2
+             сведения о шине: pci@0000:00:14.2
+             версия: 10
+             разрядность: 64 bits
+             частота: 33MHz (30.3ns)
+             возможности: pm cap_list
+             конфигурация: latency=0
+             ресурсы: память:a4422000-a4423fff память:a442a000-a442afff
+        *-network
+             описание: Беспроводной интерфейс
+             продукт: Cannon Lake PCH CNVi WiFi
+             производитель: Intel Corporation
+             физический ID: 14.3
+             сведения о шине: pci@0000:00:14.3
+             логическое имя: wlo1
+             версия: 10
+             серийный №: f4:d1:08:63:44:d0
+             разрядность: 64 bits
+             частота: 33MHz
+             возможности: pm msi pciexpress msix bus_master cap_list ethernet physical wireless
+             конфигурация: broadcast=yes driver=iwlwifi driverversion=5.19.0-38-generic firmware=46.fae53a8b.0 9000-pu-b0-jf-b0- ip=192.168.0.107 latency=0 link=yes multicast=yes wireless=IEEE 802.11
+             ресурсы: IRQ:16 память:a441c000-a441ffff
+        *-serial:0
+             описание: Serial bus controller
+             продукт: Cannon Lake PCH Serial IO I2C Controller #0
+             производитель: Intel Corporation
+             физический ID: 15
+             сведения о шине: pci@0000:00:15.0
+             версия: 10
+             разрядность: 64 bits
+             частота: 33MHz
+             возможности: pm bus_master cap_list
+             конфигурация: driver=intel-lpss latency=0
+             ресурсы: IRQ:16 память:7f800000-7f800fff
+        *-serial:1
+             описание: Serial bus controller
+             продукт: Cannon Lake PCH Serial IO I2C Controller #1
+             производитель: Intel Corporation
+             физический ID: 15.1
+             сведения о шине: pci@0000:00:15.1
+             версия: 10
+             разрядность: 64 bits
+             частота: 33MHz
+             возможности: pm bus_master cap_list
+             конфигурация: driver=intel-lpss latency=0
+             ресурсы: IRQ:17 память:7f801000-7f801fff
+        *-communication
+             описание: Communication controller
+             продукт: Cannon Lake PCH HECI Controller
+             производитель: Intel Corporation
+             физический ID: 16
+             сведения о шине: pci@0000:00:16.0
+             версия: 10
+             разрядность: 64 bits
+             частота: 33MHz
+             возможности: pm msi bus_master cap_list
+             конфигурация: driver=mei_me latency=0
+             ресурсы: IRQ:127 память:a4427000-a4427fff
+        *-sata
+             описание: SATA controller
+             продукт: Cannon Lake Mobile PCH SATA AHCI Controller
+             производитель: Intel Corporation
+             физический ID: 17
+             сведения о шине: pci@0000:00:17.0
+             логическое имя: scsi0
+             версия: 10
+             разрядность: 32 bits
+             частота: 66MHz
+             возможности: sata msi pm ahci_1.0 bus_master cap_list emulated
+             конфигурация: driver=ahci latency=0
+             ресурсы: IRQ:126 память:a4420000-a4421fff память:a4426000-a44260ff ioport:5090(размер=8) ioport:5080(размер=4) ioport:5060(размер=32) память:a4425000-a44257ff
+           *-disk
+                описание: ATA Disk
+                продукт: ST1000LX015-1U71
+                физический ID: 0.0.0
+                сведения о шине: scsi@0:0.0.0
+                логическое имя: /dev/sda
+                версия: SDM3
+                серийный №: WL1RFEK8
+                размер: 931GiB (1TB)
+                возможности: gpt-1.00 partitioned partitioned:gpt
+                конфигурация: ansiversion=5 guid=de8f5e77-849b-47ed-a07a-e21ceff342a1 logicalsectorsize=512 sectorsize=4096
+              *-volume:0
+                   описание: reserved partition
+                   производитель: Windows
+                   физический ID: 1
+                   сведения о шине: scsi@0:0.0.0,1
+                   логическое имя: /dev/sda1
+                   серийный №: e141c96b-5244-4ee2-8def-9f74df7b0991
+                   capacity: 15MiB
+                   возможности: nofs nomount
+                   конфигурация: name=Microsoft reserved partition
+              *-volume:1
+                   описание: Windows NTFS volume
+                   производитель: Windows
+                   физический ID: 2
+                   сведения о шине: scsi@0:0.0.0,2
+                   логическое имя: /dev/sda2
+                   версия: 3.1
+                   серийный №: 962dce75-8add-4f4a-a4d8-7af3c74d1cdb
+                   размер: 150GiB
+                   capacity: 150GiB
+                   возможности: ntfs initialized
+                   конфигурация: clustersize=4096 created=2023-03-16 19:34:21 filesystem=ntfs name=Basic data partition state=clean
+              *-volume:2
+                   описание: Windows NTFS volume
+                   производитель: Windows
+                   физический ID: 3
+                   сведения о шине: scsi@0:0.0.0,3
+                   логическое имя: /dev/sda3
+                   версия: 3.1
+                   серийный №: 6e38d0a2-0826-8147-b101-285e1260d3f4
+                   размер: 781GiB
+                   capacity: 781GiB
+                   возможности: ntfs initialized
+                   конфигурация: clustersize=4096 created=2023-03-17 00:08:15 filesystem=ntfs label=Новый том name=Basic data partition state=clean
+        *-pci:1
+             описание: PCI bridge
+             продукт: Cannon Lake PCH PCI Express Root Port #9
+             производитель: Intel Corporation
+             физический ID: 1d
+             сведения о шине: pci@0000:00:1d.0
+             версия: f0
+             разрядность: 32 bits
+             частота: 33MHz
+             возможности: pci pciexpress msi pm normal_decode bus_master cap_list
+             конфигурация: driver=pcieport
+             ресурсы: IRQ:123 память:a4300000-a43fffff
+           *-nvme
+                описание: NVMe device
+                продукт: MEGA S3 256GB
+                производитель: Silicon Motion, Inc.
+                физический ID: 0
+                сведения о шине: pci@0000:02:00.0
+                логическое имя: /dev/nvme0
+                версия: U0806A0
+                серийный №: AA201201040256066484
+                разрядность: 64 bits
+                частота: 33MHz
+                возможности: nvme pm msi pciexpress msix nvm_express bus_master cap_list
+                конфигурация: driver=nvme latency=0 nqn=nqn.2014.08.org.nvmexpress:126f126fAA201201040256066484MEGA S3 256GB state=live
+                ресурсы: IRQ:16 память:a4300000-a4303fff
+              *-namespace:0
+                   описание: NVMe disk
+                   физический ID: 0
+                   логическое имя: hwmon3
+              *-namespace:1
+                   описание: NVMe disk
+                   физический ID: 2
+                   логическое имя: /dev/ng0n1
+              *-namespace:2
+                   описание: NVMe disk
+                   физический ID: 1
+                   сведения о шине: nvme@0:1
+                   логическое имя: /dev/nvme0n1
+                   размер: 238GiB (256GB)
+                   возможности: gpt-1.00 partitioned partitioned:gpt
+                   конфигурация: guid=05e4fa3c-7da9-4432-b894-c2cb40079469 logicalsectorsize=512 sectorsize=512 wwid=nvme.126f-4141323031323031303430323536303636343834-4d454741205333203235364742-00000001
+                 *-volume:0
+                      описание: EFI partition
+                      физический ID: 1
+                      сведения о шине: nvme@0:1,1
+                      логическое имя: /dev/nvme0n1p1
+                      серийный №: 6ab62234-5706-43ec-98e6-dce1159287e4
+                      capacity: 4095KiB
+                 *-volume:1
+                      описание: Windows FAT volume
+                      производитель: mkfs.fat
+                      физический ID: 2
+                      сведения о шине: nvme@0:1,2
+                      логическое имя: /dev/nvme0n1p2
+                      логическое имя: /boot/efi
+                      версия: FAT32
+                      серийный №: 939b-0ce3
+                      размер: 471MiB
+                      capacity: 476MiB
+                      возможности: boot fat initialized
+                      конфигурация: FATs=2 filesystem=fat mount.fstype=vfat mount.options=rw,relatime,fmask=0077,dmask=0077,codepage=437,iocharset=iso8859-1,shortname=mixed,errors=remount-ro state=mounted
+                 *-volume:2
+                      описание: EFI partition
+                      физический ID: 3
+                      сведения о шине: nvme@0:1,3
+                      логическое имя: /dev/nvme0n1p3
+                      серийный №: 258f4869-c3f4-4863-bbc0-e57908d93748
+                      capacity: 953MiB
+                 *-volume:3
+                      описание: Том EXT4
+                      производитель: Linux
+                      физический ID: 4
+                      сведения о шине: nvme@0:1,4
+                      логическое имя: /dev/nvme0n1p4
+                      логическое имя: /
+                      логическое имя: /var/snap/firefox/common/host-hunspell
+                      версия: 1.0
+                      серийный №: 4afeab5d-2ad4-46cb-a402-e0d41259cc33
+                      размер: 237GiB
+                      возможности: journaled extended_attributes large_files huge_files dir_nlink recover 64bit extents ext4 ext2 initialized
+                      конфигурация: created=2022-09-08 21:20:14 filesystem=ext4 lastmountpoint=/ modified=2023-03-29 19:49:23 mount.fstype=ext4 mount.options=ro,noexec,noatime,errors=remount-ro mounted=2023-03-29 19:49:23 state=mounted
+        *-pci:2
+             описание: PCI bridge
+             продукт: Cannon Lake PCH PCI Express Root Port #14
+             производитель: Intel Corporation
+             физический ID: 1d.5
+             сведения о шине: pci@0000:00:1d.5
+             версия: f0
+             разрядность: 32 bits
+             частота: 33MHz
+             возможности: pci pciexpress msi pm normal_decode bus_master cap_list
+             конфигурация: driver=pcieport
+             ресурсы: IRQ:124 ioport:3000(размер=4096) память:a4200000-a42fffff
+           *-network
+                описание: Ethernet interface
+                продукт: RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller
+                производитель: Realtek Semiconductor Co., Ltd.
+                физический ID: 0
+                сведения о шине: pci@0000:03:00.0
+                логическое имя: enp3s0
+                версия: 15
+                серийный №: 3c:2c:30:e9:eb:34
+                capacity: 1Gbit/s
+                разрядность: 64 bits
+                частота: 33MHz
+                возможности: pm msi pciexpress msix bus_master cap_list ethernet physical tp mii 10bt 10bt-fd 100bt 100bt-fd 1000bt-fd autonegotiation
+                конфигурация: autonegotiation=on broadcast=yes driver=r8169 driverversion=5.19.0-38-generic firmware=rtl8168h-2_0.0.2 02/26/15 latency=0 link=no multicast=yes port=twisted pair
+                ресурсы: IRQ:17 ioport:3000(размер=256) память:a4204000-a4204fff память:a4200000-a4203fff
+        *-isa
+             описание: ISA bridge
+             продукт: HM470 Chipset LPC/eSPI Controller
+             производитель: Intel Corporation
+             физический ID: 1f
+             сведения о шине: pci@0000:00:1f.0
+             версия: 10
+             разрядность: 32 bits
+             частота: 33MHz
+             возможности: isa bus_master
+             конфигурация: latency=0
+           *-pnp00:00
+                продукт: PnP device PNP0c02
+                физический ID: 0
+                возможности: pnp
+                конфигурация: driver=system
+           *-pnp00:01
+                продукт: PnP device PNP0b00
+                физический ID: 1
+                возможности: pnp
+                конфигурация: driver=rtc_cmos
+           *-pnp00:02
+                продукт: PnP device INT3f0d
+                физический ID: 2
+                возможности: pnp
+                конфигурация: driver=system
+           *-pnp00:03
+                продукт: PnP device PNP0303
+                физический ID: 3
+                возможности: pnp
+                конфигурация: driver=i8042 kbd
+           *-pnp00:04
+                продукт: PnP device DLL086f
+                физический ID: 4
+                возможности: pnp
+                конфигурация: driver=i8042 aux
+           *-pnp00:05
+                продукт: PnP device PNP0c02
+                физический ID: 5
+                возможности: pnp
+                конфигурация: driver=system
+           *-pnp00:06
+                продукт: PnP device PNP0c02
+                физический ID: 6
+                возможности: pnp
+                конфигурация: driver=system
+           *-pnp00:07
+                продукт: PnP device PNP0c02
+                физический ID: 7
+                возможности: pnp
+                конфигурация: driver=system
+           *-pnp00:08
+                продукт: PnP device PNP0c02
+                физический ID: 8
+                возможности: pnp
+                конфигурация: driver=system
+        *-multimedia
+             описание: Audio device
+             продукт: Cannon Lake PCH cAVS
+             производитель: Intel Corporation
+             физический ID: 1f.3
+             сведения о шине: pci@0000:00:1f.3
+             логическое имя: card0
+             логическое имя: /dev/snd/controlC0
+             логическое имя: /dev/snd/hwC0D0
+             логическое имя: /dev/snd/hwC0D2
+             логическое имя: /dev/snd/pcmC0D0c
+             логическое имя: /dev/snd/pcmC0D0p
+             логическое имя: /dev/snd/pcmC0D10p
+             логическое имя: /dev/snd/pcmC0D3p
+             логическое имя: /dev/snd/pcmC0D7p
+             логическое имя: /dev/snd/pcmC0D8p
+             логическое имя: /dev/snd/pcmC0D9p
+             версия: 10
+             разрядность: 64 bits
+             частота: 33MHz
+             возможности: pm msi bus_master cap_list
+             конфигурация: driver=snd_hda_intel latency=32
+             ресурсы: IRQ:146 память:a4418000-a441bfff память:a4100000-a41fffff
+           *-input:0
+                продукт: HDA Intel PCH Headphone Mic
+                физический ID: 0
+                логическое имя: input32
+                логическое имя: /dev/input/event20
+           *-input:1
+                продукт: HDA Intel PCH HDMI/DP,pcm=3
+                физический ID: 1
+                логическое имя: input33
+                логическое имя: /dev/input/event21
+           *-input:2
+                продукт: HDA Intel PCH HDMI/DP,pcm=7
+                физический ID: 2
+                логическое имя: input34
+                логическое имя: /dev/input/event22
+           *-input:3
+                продукт: HDA Intel PCH HDMI/DP,pcm=8
+                физический ID: 3
+                логическое имя: input35
+                логическое имя: /dev/input/event23
+           *-input:4
+                продукт: HDA Intel PCH HDMI/DP,pcm=9
+                физический ID: 4
+                логическое имя: input36
+                логическое имя: /dev/input/event24
+           *-input:5
+                продукт: HDA Intel PCH HDMI/DP,pcm=10
+                физический ID: 5
+                логическое имя: input37
+                логическое имя: /dev/input/event25
+        *-serial:2
+             описание: SMBus
+             продукт: Cannon Lake PCH SMBus Controller
+             производитель: Intel Corporation
+             физический ID: 1f.4
+             сведения о шине: pci@0000:00:1f.4
+             версия: 10
+             разрядность: 64 bits
+             частота: 33MHz
+             конфигурация: driver=i801_smbus latency=0
+             ресурсы: IRQ:16 память:a4424000-a44240ff ioport:efa0(размер=32)
+        *-serial:3
+             описание: Serial bus controller
+             продукт: Cannon Lake PCH SPI Controller
+             производитель: Intel Corporation
+             физический ID: 1f.5
+             сведения о шине: pci@0000:00:1f.5
+             версия: 10
+             разрядность: 32 bits
+             частота: 33MHz
+             конфигурация: driver=intel-spi latency=0
+             ресурсы: IRQ:0 память:fe010000-fe010fff
+  *-battery
+       продукт: DELL W7NKD8C
+       производитель: Samsung SDI
+       физический ID: 1
+       версия: 12/24/2018
+       серийный №: 045C
+       слот: Sys. Battery Bay
+       capacity: 55990mWh
+       конфигурация: voltage=15,2V
+  *-input:0
+       продукт: Lid Switch
+       физический ID: 2
+       логическое имя: input0
+       логическое имя: /dev/input/event0
+       возможности: platform
+  *-input:1
+       продукт: Power Button
+       физический ID: 3
+       логическое имя: input1
+       логическое имя: /dev/input/event1
+       возможности: platform
+  *-input:2
+       продукт: Intel HID events
+       физический ID: 4
+       логическое имя: input16
+       логическое имя: /dev/input/event11
+       возможности: platform
+  *-input:3
+       продукт: Intel HID 5 button array
+       физический ID: 5
+       логическое имя: input17
+       логическое имя: /dev/input/event12
+       возможности: platform
+  *-input:4
+       продукт: Dell WMI hotkeys
+       физический ID: 6
+       логическое имя: input19
+       логическое имя: /dev/input/event6
+       возможности: platform
+  *-input:5
+       продукт: Sleep Button
+       физический ID: 7
+       логическое имя: input2
+       логическое имя: /dev/input/event2
+       возможности: platform
+  *-input:6
+       продукт: DELL086F:00 06CB:7E92 Mouse
+       физический ID: 8
+       логическое имя: input25
+       логическое имя: /dev/input/event8
+       логическое имя: /dev/input/mouse1
+       возможности: i2c
+  *-input:7
+       продукт: DELL086F:00 06CB:7E92 Touchpad
+       физический ID: 9
+       логическое имя: input26
+       логическое имя: /dev/input/event15
+       логическое имя: /dev/input/mouse2
+       возможности: i2c
+  *-input:8
+       продукт: Power Button
+       физический ID: a
+       логическое имя: input3
+       логическое имя: /dev/input/event3
+       возможности: platform
+  *-input:9
+       продукт: Video Bus
+       физический ID: b
+       логическое имя: input30
+       логическое имя: /dev/input/event18
+       возможности: platform
+  *-input:10
+       продукт: Video Bus
+       физический ID: c
+       логическое имя: input31
+       логическое имя: /dev/input/event19
+       возможности: platform
+  *-input:11
+       продукт: AT Translated Set 2 keyboard
+       физический ID: d
+       логическое имя: input4
+       логическое имя: /dev/input/event4
+       логическое имя: input4::capslock
+       логическое имя: input4::numlock
+       логическое имя: input4::scrolllock
+       возможности: i8042

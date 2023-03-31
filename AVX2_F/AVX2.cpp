@@ -6,12 +6,12 @@
 #include <math.h>
 #include <SFML/Graphics.hpp>
 
-#include "Mandelbrot.h"
+#include "AVX2_Mandelbrot.h"
+
 
 //================================================================================
 
 using namespace sf;
-using namespace std;
 
 //================================================================================
 
@@ -39,10 +39,11 @@ int main ()
     text.setOutlineThickness(4);
 
     Clock clock;
+
     STimer timer;
-    timer.frames_amnt = 10;
-    timer.frames_cnt  = 0;
-    timer.fps = 0;
+    timer.frames_amnt   = 10;
+    timer.frames_cnt    = 0;
+    timer.fps           = 0;
 
 	while (window.isOpen())
 	{
@@ -51,42 +52,8 @@ int main ()
         Event event;
         while (window.pollEvent(event))
         {
-            if (event.type == Event::Closed)
-            {
-                window.close();
-            }
-
-            if (event.type == Event::KeyPressed)
-			{
-                user_move (ARGUMENTS);
-
-				if (event.key.code == Keyboard::N) //NORMAL_SETTINGS
-                {
-                    render_init (&render);
-                }
-
-                if (event.key.code == Keyboard::T) //TEST
-                {
-                    render.draw_permission = !render.draw_permission;
-                }
-
-				if (event.key.code == Keyboard::Escape)
-                {
-                    window.close();
-                }
-			}
-
-            if (event.type == Event::MouseWheelScrolled)
-			{
-                user_max_cnt_change (ARGUMENTS);
-			}
-
-            if (event.type == Event::MouseButtonPressed)
-			{
-                user_zoom (ARGUMENTS);
-			}
+            user_interruption (P_ARGUMENTS, &window);
         }
-
 
         count_Mandelbrot (&render, &image);
 
@@ -96,7 +63,7 @@ int main ()
             sprite.setTexture(texture);
             window.draw(sprite);
 
-            user_display (&window, &text, &render);
+            user_display (&text, &render);
             window.draw(text);
 
             window.display();
@@ -105,6 +72,7 @@ int main ()
         get_fps_count (&clock, &timer);
     }
 
+    return 0;
 }
 
 //================================================================================

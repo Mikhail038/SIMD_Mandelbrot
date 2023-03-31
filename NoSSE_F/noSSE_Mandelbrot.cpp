@@ -4,10 +4,11 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <emmintrin.h>
 #include <immintrin.h>
 #include <x86intrin.h>
 
-#include "Mandelbrot.h"
+#include "noSSE_Mandelbrot.h"
 
 //================================================================================
 
@@ -75,7 +76,7 @@ void get_fps_count (sf::Clock* clock, STimer* timer)
 
 //================================================================================
 
-void user_display (sf::Window* window, sf::Text* text, SRender* render)
+void user_display (sf::Text* text, SRender* render)
 {
     char str[100];
 
@@ -131,6 +132,46 @@ void count_Mandelbrot (SRender* render, Image* image)
 }
 
 //================================================================================
+
+void user_interruption (FUNC_ARGUMENTS, Window* window)
+{
+    if (event->type == Event::Closed)
+    {
+        window->close();
+    }
+
+    if (event->type == Event::KeyPressed)
+    {
+        user_move (ARGUMENTS);
+
+        if (event->key.code == Keyboard::N) //NORMAL_SETTINGS
+        {
+            render_init (render);
+        }
+
+        if (event->key.code == Keyboard::T) //TEST SWITCH
+        {
+            render->draw_permission = !render->draw_permission;
+        }
+
+        if (event->key.code == Keyboard::Escape) //EXIT
+        {
+            window->close();
+        }
+    }
+
+    if (event->type == Event::MouseWheelScrolled)
+    {
+        user_max_cnt_change (ARGUMENTS);
+    }
+
+    if (event->type == Event::MouseButtonPressed)
+    {
+        user_zoom (ARGUMENTS);
+    }
+
+    return;
+}
 
 void user_move (FUNC_ARGUMENTS)
 {
@@ -212,3 +253,16 @@ void zoom (FUNC_ARGUMENTS, double z)
 }
 
 //================================================================================
+//__m128d _mm_set_pd (double e1, double e0)
+//__m128d _mm_add_pd (__m128d a, __m128d b)
+
+void simd_shift_x (SRender* render, double right_shift)
+{
+    __m128d new_x_coords = _mm_add_pd ( _mm_set_pd (render->min_X, render->max_X),
+                                        _mm_set_pd (right_shift, right_shift));
+
+    render->min_X = *((double*) &new_x_coords);
+    render->max_X = *((double*) (&new_x_coords + 1));
+
+    return;
+}

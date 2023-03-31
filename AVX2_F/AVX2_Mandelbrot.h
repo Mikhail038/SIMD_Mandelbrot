@@ -8,7 +8,9 @@
 
 #define FUNC_ARGUMENTS sf::Event* event, SRender* render
 
-#define ARGUMENTS &event, &render
+#define ARGUMENTS event, render
+#define P_ARGUMENTS &event, &render
+
 
 
 //================================================================================
@@ -61,9 +63,11 @@ void count_Mandelbrot (SRender* render, sf::Image* image);
 
 //================================================================================
 
-void user_display (sf::Window* window, sf::Text* text, SRender* render);
+void user_display (sf::Text* text, SRender* render);
 
 //================================================================================
+
+void user_interruption (FUNC_ARGUMENTS, sf::Window* window);
 
 void user_max_cnt_change (FUNC_ARGUMENTS);
 
@@ -75,4 +79,6 @@ void zoom (FUNC_ARGUMENTS, double z);
 
 //================================================================================
 
+void simd_shift_x (SRender* render, double right_shift);
 
+//================================================================================
