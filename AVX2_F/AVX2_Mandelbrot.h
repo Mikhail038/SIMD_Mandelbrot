@@ -16,6 +16,12 @@
 
 //================================================================================
 
+enum EColors
+{
+    stripes = 0,
+    black_n_white = 1
+};
+
 typedef struct
 {
     const int   W   = 1080;
@@ -42,6 +48,8 @@ typedef struct
     int zoom_coef;
 
     bool SIMD_mode;
+
+    EColors color;
 }SRender;
 
 typedef struct

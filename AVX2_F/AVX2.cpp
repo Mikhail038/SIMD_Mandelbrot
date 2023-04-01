@@ -21,6 +21,7 @@ int main ()
 
     render.draw_permission = true;
     render.SIMD_mode = true;
+    render.color = black_n_white;
     render_init (&render);
 
 	RenderWindow window(VideoMode(render.W, render.H), "Mandelbrot-Menge");
