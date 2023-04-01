@@ -19,6 +19,8 @@ int main ()
 {
     SRender render = {};
 
+    render.draw_permission = true;
+    render.SIMD_mode = true;
     render_init (&render);
 
 	RenderWindow window(VideoMode(render.W, render.H), "Mandelbrot-Menge");
@@ -57,19 +59,23 @@ int main ()
 
         count_Mandelbrot (&render, &image);
 
+
         if (render.draw_permission == true)
         {
             texture.loadFromImage(image);
             sprite.setTexture(texture);
             window.draw(sprite);
-
-            user_display (&text, &render);
-            window.draw(text);
-
-            window.display();
         }
 
-        get_fps_count (&clock, &timer);
+        int fps = get_fps_count (&clock, &timer);
+
+        if (fps > 1e-5)
+        {
+            user_set_display (&text, &render, fps);
+        }
+
+        window.draw(text);
+        window.display();
     }
 
     return 0;
