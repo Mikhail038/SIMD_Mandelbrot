@@ -294,8 +294,8 @@ void user_move (FUNC_ARGUMENTS)
     double h = render->delta_Y * render->speed_coef;
 
     if (event->key.code == Keyboard::Left)   {render->min_X -= w, render->max_X -= w; }
-    if (event->key.code == Keyboard::Up)     {render->min_Y -= h, render->max_Y -= h; }
-    if (event->key.code == Keyboard::Down)   {render->min_Y += h, render->max_Y += h; }
+    if (event->key.code == Keyboard::Up)     {render->min_Y += h, render->max_Y += h; }
+    if (event->key.code == Keyboard::Down)   {render->min_Y -= h, render->max_Y -= h; }
     if (event->key.code == Keyboard::Right)  {render->min_X += w, render->max_X += w; }
 
     return;

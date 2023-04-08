@@ -33,7 +33,7 @@ int main ()
 	Sprite sprite;
 
 	Font font;
-    font.loadFromFile("arial.ttf");
+    font.loadFromFile("MEDIA/arial.ttf");
 
 	Text text;
 	text.setFont(font);
